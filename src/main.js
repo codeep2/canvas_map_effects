@@ -2,7 +2,7 @@
  * @Author: MADAO
  * @Date: 2020-07-21 09:42:12
  * @LastEditors: MADAO
- * @LastEditTime: 2020-07-22 11:11:58
+ * @LastEditTime: 2020-07-22 11:40:14
  * @Description: 主要js文件
  */
 const app = {
@@ -108,12 +108,10 @@ const app = {
         x: this.quadraticBezier(x, controlPoint.x, this.centerCoordinate.x, this.progress / 100),
         y: this.quadraticBezier(y, controlPoint.y, this.centerCoordinate.y, this.progress / 100)
       }
-      // 画圆
-      const color = 'rgba(255,255,0,1)'
       this.trackCtx.beginPath()
-      this.trackCtx.shadowColor = color;
+      this.trackCtx.shadowColor = this.color;
       this.trackCtx.shadowBlur = 8;
-      this.trackCtx.fillStyle = color;
+      this.trackCtx.fillStyle = this.color;
       this.trackCtx.arc(endPoint.x, endPoint.y, 4, 0, 2 * Math.PI);
       this.trackCtx.fill();
     })
