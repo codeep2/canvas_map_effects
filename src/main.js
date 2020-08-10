@@ -2,7 +2,7 @@
  * @Author: MADAO
  * @Date: 2020-07-21 09:42:12
  * @LastEditors: MADAO
- * @LastEditTime: 2020-07-22 11:40:14
+ * @LastEditTime: 2020-08-10 10:03:28
  * @Description: 主要js文件
  */
 const app = {
@@ -14,7 +14,6 @@ const app = {
   trackCtx: null,
   centerCoordinate: { x: 1201, y: 356 },
   progress: 0,
-  color: 'rgba(255,255,0,1)',
   coordinateGroup: [
     { x: 1282, y: 163 },
     { x: 1201, y: 356 },
@@ -69,7 +68,7 @@ const app = {
       this.pointCtx.beginPath()
       this.pointCtx.arc(x, y, newRadius, 0, 2 * Math.PI)
       this.pointCtx.closePath()
-      this.pointCtx.strokeStyle = this.color
+      this.pointCtx.strokeStyle = '#005086'
       this.pointCtx.lineWidth= 2
       this.pointCtx.stroke()
       newRadius += 1
@@ -82,7 +81,10 @@ const app = {
 
   drawLine () {
     this.coordinateGroup.forEach(({ x, y }) => {
-      this.backCtx.strokeStyle = this.color
+      if (x === this.centerCoordinate.x && y === this.centerCoordinate.y) {
+        return
+      }
+      this.backCtx.strokeStyle = '#065446'
       this.backCtx.lineWidth = 1
       this.backCtx.moveTo(x, y)
       const controlPoint = {
@@ -108,10 +110,11 @@ const app = {
         x: this.quadraticBezier(x, controlPoint.x, this.centerCoordinate.x, this.progress / 100),
         y: this.quadraticBezier(y, controlPoint.y, this.centerCoordinate.y, this.progress / 100)
       }
+      const color = '#1f4068'
       this.trackCtx.beginPath()
-      this.trackCtx.shadowColor = this.color;
+      this.trackCtx.shadowColor = color;
       this.trackCtx.shadowBlur = 8;
-      this.trackCtx.fillStyle = this.color;
+      this.trackCtx.fillStyle = color;
       this.trackCtx.arc(endPoint.x, endPoint.y, 4, 0, 2 * Math.PI);
       this.trackCtx.fill();
     })
