@@ -2,7 +2,7 @@
  * @Author: MADAO
  * @Date: 2020-07-21 09:42:12
  * @LastEditors: MADAO
- * @LastEditTime: 2020-08-10 10:03:28
+ * @LastEditTime: 2020-08-10 14:38:42
  * @Description: 主要js文件
  */
 const app = {
@@ -71,7 +71,7 @@ const app = {
       this.pointCtx.strokeStyle = '#005086'
       this.pointCtx.lineWidth= 2
       this.pointCtx.stroke()
-      newRadius += 1
+      newRadius += 0.5
       if (newRadius > 30) {
         newRadius = 0
       }
@@ -122,7 +122,6 @@ const app = {
 
   renderPoint () {
     this.pointCtx.globalCompositeOperation = 'destination-in'
-    this.pointCtx.globalAlpha = 0.95
     this.pointCtx.fillRect(0, 0, this.pointCanvas.width, this.pointCanvas.height)
     this.pointCtx.globalCompositeOperation = 'source-over'
     this.drawCircle()
